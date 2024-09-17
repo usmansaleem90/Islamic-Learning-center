@@ -1,0 +1,24 @@
+footer {
+  background-color: #1d3557;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  width: 100%;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
+footer a {
+  color: #ffdd57;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #fca311;
+  }
+}

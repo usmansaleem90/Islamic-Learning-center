@@ -1,0 +1,35 @@
+*{
+  text-decoration: none !important;
+  list-style: none !important;
+}
+.chatbot-container{
+  background-color: #1A202C !important;
+}
+
+a{
+  color: black !important;
+}
+.home-body {
+  margin-top: 100px !important;
+    height: 100vh;
+  }
+  .bg-red {
+    background-color: #D2B995;
+    color: black;
+  }
+  audio {
+    width: 100%;
+    outline: none;
+  }
+  
+  .scroll {
+    height: 100%;
+    overflow: auto;
+  }
+  .curser {
+    cursor: pointer;
+  }
+  .active {
+    /* color: yellow !important; */
+  }
+  
