@@ -11,7 +11,10 @@ a{
 }
 .home-body {
   margin-top: 100px !important;
-    height: 100vh;
+ 
+  }
+  .m{
+       height: 100vh !important;
   }
   .bg-red {
     background-color: #D2B995;

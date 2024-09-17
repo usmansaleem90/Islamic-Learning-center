@@ -10,6 +10,7 @@ import service3 from "./assets/media/services/service-3.png"
 import blog1 from "./assets/media/blogs/blog-5.png"
 import blog2 from "./assets/media/blogs/blog-6.png"
 import blog3 from "./assets/media/blogs/blog-7.png"
+import MenuIcon from "@mui/icons-material/Menu"; // Import Menu icon for the toggle button
 
 const Home = () => {
   return (
@@ -36,7 +37,7 @@ const Home = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#mynavbar"
                 >
-                  <i className="fas fa-bars" />
+                   <MenuIcon style={{ color: "black" }} />
                 </button>
                 <div
                   className="collapse navbar-collapse center justify-content-end"

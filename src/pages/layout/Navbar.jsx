@@ -55,7 +55,7 @@ const Navbar = ({ sessions, setActiveSessionId, createNewSession }) => {
   };
 
   return (
-    <Box>
+    <Box style={{backgroundColor:"#1A202C"}}>
       {isMobile && (
         <IconButton
           color="inherit"
@@ -64,7 +64,7 @@ const Navbar = ({ sessions, setActiveSessionId, createNewSession }) => {
           onClick={handleDrawerToggle}
           sx={{ marginLeft: 1 }}
         >
-          <MenuIcon style={{ color: "#FFFF" }} />
+          <MenuIcon style={{ color: "white" }} />
         </IconButton>
       )}
       <Drawer

@@ -41,72 +41,69 @@ function App() {
     return sorryResponses[Math.floor(Math.random() * sorryResponses.length)];
   };
 
-  const handleSendMessage = async (newMessage) => {
-    const newMessageObject = {
-      id: sessions[activeSessionId].messages.length,
-      text: newMessage,
-      sender: "user",
+ const handleSendMessage = async (newMessage) => {
+  const newMessageObject = {
+    id: sessions[activeSessionId].messages.length,
+    text: newMessage,
+    sender: "user",
+  };
+  const newMessages = [
+    ...sessions[activeSessionId].messages,
+    newMessageObject,
+  ];
+  const updatedSessions = {
+    ...sessions,
+    [activeSessionId]: {
+      ...sessions[activeSessionId],
+      messages: newMessages,
+    },
+  };
+  setSessions(updatedSessions);
+
+  setLoading(true);
+
+  try {
+    const response = await axios.post(
+      `https://nodebackend-swart.vercel.app/chat`, {
+        userInput: newMessage
+      }
+    );
+    console.log(response.data.message);
+
+    const botMessageText = response.data.message || getRandomSorryResponse();
+
+    const botMessage = {
+      id: newMessages.length,
+      text: botMessageText,
+      sender: "bot",
     };
-    const newMessages = [
-      ...sessions[activeSessionId].messages,
-      newMessageObject,
-    ];
-    const updatedSessions = {
+    const updatedMessages = [...newMessages, botMessage];
+    setSessions({
       ...sessions,
       [activeSessionId]: {
         ...sessions[activeSessionId],
-        messages: newMessages,
+        messages: updatedMessages,
       },
+    });
+  } catch (error) {
+    const botMessage = {
+      id: newMessages.length,
+      text: getRandomSorryResponse(),
+      sender: "bot",
     };
-    setSessions(updatedSessions);
+    const updatedMessages = [...newMessages, botMessage];
+    setSessions({
+      ...sessions,
+      [activeSessionId]: {
+        ...sessions[activeSessionId],
+        messages: updatedMessages,
+      },
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
-    setLoading(true);
-
-    try {
-      const response = await axios.post(
-        `http://localhost:3000/chat` , {
-          userInput :newMessage
-        }
-      );
-      console.log(response.data.message);
-      let botMessageText =
-        response.data.message ||
-        getRandomSorryResponse();
-
-      // Clean the response by removing all HTML tags
-      // botMessageText = botMessageText.replace(/<\/?[^>]+(>|$)/g, "");
-
-      const botMessage = {
-        id: newMessages.length,
-        text: botMessageText,
-        sender: "bot",
-      };
-      const updatedMessages = [...newMessages, botMessage];
-      setSessions({
-        ...sessions,
-        [activeSessionId]: {
-          ...sessions[activeSessionId],
-          messages: updatedMessages,
-        },
-      });
-    } catch (error) {
-      const botMessage = {
-        id: newMessages.length,
-        text: getRandomSorryResponse(),
-        sender: "bot",
-      };
-      const updatedMessages = [...newMessages, botMessage];
-      setSessions({
-        ...sessions,
-        [activeSessionId]: {
-          ...sessions[activeSessionId],
-          messages: updatedMessages,
-        },
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const createNewSession = () => {
     const newSessionId = Object.keys(sessions).length + 1;

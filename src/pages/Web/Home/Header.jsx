@@ -1,5 +1,7 @@
 import React from 'react'
 import logo from "./assets/media/logo.png"
+import MenuIcon from "@mui/icons-material/Menu"; // Import Menu icon for the toggle button
+
 const Header = () => {
   return (
     <div>
@@ -17,7 +19,7 @@ const Header = () => {
                   data-bs-toggle="collapse"
                   data-bs-target="#mynavbar"
                 >
-                  <i className="fas fa-bars" />
+                   <MenuIcon style={{ color: "black" }} />
                 </button>
                 <div
                   className="collapse navbar-collapse center justify-content-end"

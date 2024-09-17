@@ -47,22 +47,24 @@ const HomeScreen = () => {
   return (
     <>
     <Header />
-    <div className='row p-5 home-body '>
-      <div className='col-lg-4 col-md-4 col-sm-12 col-12 scroll'>
+    <div className=' home-body '>
+   <div className=" row p-5 ">
+   <div className='col-lg-4 col-md-4 col-sm-12 col-12 m scroll'>
         <RecitersScreen reciters={reciters} reciterHandler={reciterHandler} />
       </div>
-      <div className='col-lg-4 col-md-4 col-sm-12 col-12 scroll '>
+      <div className='col-lg-4 col-md-4 col-sm-12 col-12 scroll m my-lg-0 my-md-0 my-sm-4 my-4 '>
         <ChaptersScreen chapters={chapters} chapterHandler={chapterHandler} />
       </div>
-      <div className='col-lg-4 col-md-4 col-sm-12 col-12 '>
+      <div className='col-lg-4 col-md-4 col-sm-12 col-12 m '>
         <PlayerScreen
           reciterDetail={reciterDetail}
           chapterDetail={chapterDetail}
         />
       </div>
     </div>
+   </div>
   
-     <Footer />
+     <Footer className="" />
     </>
   )
 }
