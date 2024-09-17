@@ -49,6 +49,7 @@ const manifestForPlugin = {
 export default defineConfig({
   build: {
     sourcemap: true,
+    outDir: 'build', 
   },
   server: {
     port: 3000,  // Change to your desired port
