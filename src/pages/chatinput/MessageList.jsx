@@ -33,7 +33,6 @@ const MessageList = ({ messages, loading }) => {
             <CSSTransition key={index} timeout={500} classNames="fade">
               <ListItem sx={{ borderBottom: "1px solid #424242" }}>
                 <ListItemText
-{/* primary={message?.text} */}
                  primary={
                     <span
                       dangerouslySetInnerHTML={{ __html: message?.text }}
